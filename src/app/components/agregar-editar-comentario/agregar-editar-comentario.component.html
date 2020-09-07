@@ -1,0 +1,28 @@
+<h3> {{accion}} Comentario</h3>
+<form [formGroup] = "comentarios" (ngSubmit)="guardarComentario()">
+    <div class="form-group row">
+        <label class="control-label col-md-12">Título</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName = "titulo">
+        </div>
+    </div>
+    <span class="text-danger ml-3" *ngIf="comentarios.get('titulo').hasError('required') && comentarios.get('titulo').touched">El título es requerido</span>
+    <div class="form-group row">
+        <label class="control-label col-md-12">Creador</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" formControlName = "creador">
+        </div>
+    </div>
+    <span class="text-danger ml-3" *ngIf="comentarios.get('creador').hasError('required') && comentarios.get('creador').touched">El creador es requerido</span>
+    <div class="form-group row">
+        <label class="control-label col-md-12">Texto</label>
+        <div class="col-md-12">
+            <textarea class="form-control" rows="8" formControlName = "texto"></textarea>
+        </div>
+    </div>
+    <span class="text-danger ml-3" *ngIf="comentarios.get('texto').hasError('required') && comentarios.get('texto').touched">El texto es requerido</span>
+    <div class="form-group">
+        <button class="btn btn-success float-right" [disabled] = "comentarios.invalid">Aceptar</button>
+        <button [routerLink] = "['/']" class="btn btn-secondary float-left">Cancelar</button>
+    </div>
+</form>
